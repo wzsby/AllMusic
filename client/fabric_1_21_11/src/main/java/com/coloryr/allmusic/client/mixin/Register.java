@@ -13,6 +13,6 @@ import java.io.IOException;
 public class Register {
     @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/PacketProcessor;<init>(Ljava/lang/Thread;)V"))
     public void register(CallbackInfo info) throws IOException {
-        AllMusicCore.glInit();
+        AllMusicCore.renderInit();
     }
 }

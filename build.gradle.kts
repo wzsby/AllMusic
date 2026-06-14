@@ -30,6 +30,7 @@ allprojects {
         maven("https://repo.codemc.io/repository/maven-snapshots/")
         maven("https://jitpack.io/")
         maven("https://maven.izzel.io/releases/")
+        maven("https://maven.maxhenkel.de/repository/public")
     }
 
     dependencies {

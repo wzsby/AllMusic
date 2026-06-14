@@ -3,7 +3,7 @@ package com.coloryr.allmusic.client;
 import com.coloryr.allmusic.client.core.AllMusicHud;
 import com.coloryr.allmusic.client.core.Point2f;
 import com.coloryr.allmusic.client.core.render.TextFrameBuffer;
-import com.coloryr.allmusic.client.mui.CoreGuiRenderer;
+import com.coloryr.allmusic.client.others.ModernUI;
 import com.coloryr.allmusic.codec.HudPosType;
 import com.mojang.blaze3d.ProjectionType;
 import com.mojang.blaze3d.buffers.GpuBuffer;
@@ -271,7 +271,7 @@ public class CoreRenderTarget extends TextFrameBuffer {
                 var scissor = text.scissor;
                 Font.PreparedText preparedText = text.ensurePrepared();
                 if (AllMusicClient.modui) {
-                    CoreGuiRenderer.text(preparedText, renderState, pose, scissor);
+                    ModernUI.text(preparedText, renderState, pose, scissor);
                 } else {
                     preparedText.visit(new Font.GlyphVisitor() {
                         @Override

@@ -20,6 +20,9 @@
     ],
     "client": [
       "com.coloryr.allmusic.client.AllMusicClient"
+    ],
+    "voicechat": [
+      "com.coloryr.allmusic.client.others.VoiceChat"
     ]
   },
   "mixins": [
@@ -35,6 +38,7 @@
     "fabric-api": "*"
   },
   "suggests": {
-    "modernui": "*"
+    "modernui": "*",
+    "voicechat_api": "*"
   }
 }

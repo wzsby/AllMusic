@@ -124,14 +124,10 @@ public class AllMusicClient implements ClientModInitializer, AllMusicBridge {
         if (FabricLoader.getInstance().isModLoaded("modernui")) {
             modui = true;
         }
+        if (FabricLoader.getInstance().isModLoaded("modernui")) {
+            modui = true;
+        }
 
         AllMusicCore.init(FabricLoader.getInstance().getConfigDir(), this);
-    }
-
-    public static class Tex extends AbstractTexture {
-        public Tex(GpuTexture tex, GpuTextureView view) {
-            this.texture = tex;
-            this.textureView = view;
-        }
     }
 }

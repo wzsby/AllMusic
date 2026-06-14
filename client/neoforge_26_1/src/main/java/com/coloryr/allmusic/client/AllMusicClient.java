@@ -15,6 +15,7 @@ import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.sounds.SoundSource;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.loading.FMLPaths;
@@ -36,7 +37,7 @@ import java.nio.charset.StandardCharsets;
 @EventBusSubscriber(modid = AllMusicClient.MODID, value = Dist.CLIENT)
 public class AllMusicClient implements IPayloadHandler<MusicCodec>, AllMusicBridge {
     public static final String MODID = "allmusic_client";
-
+    public static boolean modui;
     public static final Logger LOGGER = LoggerFactory.getLogger("AllMusic Client");
     public static GuiGraphicsExtractor context;
 
@@ -45,7 +46,12 @@ public class AllMusicClient implements IPayloadHandler<MusicCodec>, AllMusicBrid
         AllMusicClient client = new AllMusicClient();
         AllMusicInit.handler = client;
         AllMusicCore.init(FMLPaths.CONFIGDIR.get(), client);
-        event.enqueueWork(AllMusicCore::glInit);
+
+        Minecraft.getInstance().execute(AllMusicCore::renderInit);
+
+        if (ModList.get().isLoaded("modernui")) {
+            modui = true;
+        }
     }
 
     @SubscribeEvent

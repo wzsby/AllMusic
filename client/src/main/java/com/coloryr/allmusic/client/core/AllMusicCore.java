@@ -62,6 +62,15 @@ public class AllMusicCore {
     }
 
     /**
+     * 降低播放音量
+     */
+    public static void chat() {
+        if (player != null) {
+            player.setChat();
+        }
+    }
+
+    /**
      * 是否正在播放音乐
      *
      * @return 是否在播放
@@ -138,7 +147,7 @@ public class AllMusicCore {
     /**
      * 贴图初始化
      */
-    public static void glInit() {
+    public static void renderInit() {
         hud = new AllMusicHud(config.picSize);
     }
 

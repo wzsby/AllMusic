@@ -34,3 +34,15 @@ type = "required"
 versionRange = "[26.1,)"
 ordering = "NONE"
 side = "CLIENT"
+
+[[dependencies.allmusic_client]]
+modId="modernui"
+type="optional"
+ordering="AFTER"
+side="CLIENT"
+
+[[dependencies.allmusic_client]]
+modId="voicechat_api"
+type="optional"
+ordering="AFTER"
+side="CLIENT"

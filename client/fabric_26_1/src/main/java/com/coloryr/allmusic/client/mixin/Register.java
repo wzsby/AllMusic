@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class Register {
     @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/PacketProcessor;<init>(Ljava/lang/Thread;)V"))
     public void register(CallbackInfo info) {
-        AllMusicCore.glInit();
+        AllMusicCore.renderInit();
     }
 }

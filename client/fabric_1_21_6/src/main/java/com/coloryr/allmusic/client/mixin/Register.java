@@ -12,6 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class Register {
     @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/TitleScreen;registerTextures(Lnet/minecraft/client/renderer/texture/TextureManager;)V"))
     public void register(CallbackInfo info) {
-        RenderSystem.queueFencedTask(AllMusicCore::glInit);
+        RenderSystem.queueFencedTask(AllMusicCore::renderInit);
     }
 }

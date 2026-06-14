@@ -121,6 +121,6 @@ public class AllMusicClient implements ClientModInitializer, AllMusicBridge {
         });
 
         AllMusicCore.init(FabricLoader.getInstance().getConfigDir(), this);
-        RenderSystem.recordRenderCall(AllMusicCore::glInit);
+        RenderSystem.recordRenderCall(AllMusicCore::renderInit);
     }
 }

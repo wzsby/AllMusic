@@ -9,6 +9,7 @@ import com.coloryr.allmusic.client.core.player.decoder.mp3.Mp3Decoder;
 import com.coloryr.allmusic.client.core.player.decoder.ogg.OggDecoder;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.ConnectionClosedException;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.io.CloseMode;
 import org.lwjgl.BufferUtils;
@@ -48,6 +49,7 @@ public class AllMusicPlayer extends InputStream {
     private IntBuffer source;
     private long local;
     private boolean isRun;
+    private boolean isChat;
     private ScheduledExecutorService scheduler;
 
     public AllMusicPlayer(IntBuffer source) {
@@ -59,6 +61,10 @@ public class AllMusicPlayer extends InputStream {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setChat() {
+        isChat = true;
     }
 
     public void run1() {
@@ -184,6 +190,7 @@ public class AllMusicPlayer extends InputStream {
                 }
                 reload = false;
                 isClose = false;
+                int chatCount = 0;
 
                 while (true) {
                     try {
@@ -218,6 +225,9 @@ public class AllMusicPlayer extends InputStream {
 
                         float temp = AllMusicCore.bridge.getVolume();
                         float now = AL10.alGetSourcef(index, AL10.AL_GAIN);
+                        if (isChat) {
+                            temp *= 0.2F;
+                        }
                         if (now != temp) {
                             AL10.alSourcef(index, AL10.AL_GAIN, temp);
                         }
@@ -231,6 +241,14 @@ public class AllMusicPlayer extends InputStream {
                         }
 
                         Thread.sleep(5);
+
+                        if (isChat) {
+                            chatCount++;
+                            if (chatCount >= 200) {
+                                isChat = false;
+                                chatCount = 0;
+                            }
+                        }
                     } catch (Exception e) {
                         if (!isClose) {
                             e.printStackTrace();
@@ -348,7 +366,7 @@ public class AllMusicPlayer extends InputStream {
             int temp = content.read(buf, off, len);
             local += temp;
             return temp;
-        } catch (SocketTimeoutException | SocketException ex) {
+        } catch (IOException e) {
             connect();
             return this.read(buf, off, len);
         }

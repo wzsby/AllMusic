@@ -45,7 +45,7 @@ public class AllMusicClient implements IPayloadHandler<MusicCodec>, AllMusicBrid
         AllMusicClient client = new AllMusicClient();
         AllMusicInit.handler = client;
         AllMusicCore.init(FMLPaths.CONFIGDIR.get(), client);
-        event.enqueueWork(AllMusicCore::glInit);
+        event.enqueueWork(AllMusicCore::renderInit);
     }
 
     @SubscribeEvent

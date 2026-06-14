@@ -18,6 +18,9 @@ repositories {
 dependencies {
     minecraft("com.mojang:minecraft:26.1")
     neoForge("net.neoforged:neoforge:26.1.0.19-beta")
+
+    compileOnly("icyllis.modernui:ModernUI-NeoForge:26.1.2-3.13.0.4")
+    compileOnly("de.maxhenkel.voicechat:voicechat-api:2.6.0")
 }
 
 tasks {

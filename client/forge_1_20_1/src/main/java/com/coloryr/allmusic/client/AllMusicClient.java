@@ -59,7 +59,7 @@ public class AllMusicClient implements AllMusicBridge {
 
     private void setup(final FMLClientSetupEvent event) {
         AllMusicCore.init(FMLPaths.CONFIGDIR.get(), this);
-        event.enqueueWork(AllMusicCore::glInit);
+        event.enqueueWork(AllMusicCore::renderInit);
         NetworkRegistry.ChannelBuilder.named(channel)
                 .networkProtocolVersion(() -> "1.0")
                 .clientAcceptedVersions(((status) -> true))
