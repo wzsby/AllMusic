@@ -114,7 +114,7 @@ public class AllMusicClient implements IPayloadHandler<MusicCodec>, AllMusicBrid
     @Override
     public String readText(String file) {
         try {
-            Resource resource = Minecraft.getInstance().getResourceManager().getResource(ResourceLocation.fromNamespaceAndPath(AllMusicInit.MODID, file)).orElseThrow();
+            Resource resource = Minecraft.getInstance().getResourceManager().getResource(ResourceLocation.fromNamespaceAndPath(MODID, file)).orElseThrow();
             try (InputStream inputStream = resource.open()) {
                 byte[] bytes = inputStream.readAllBytes();
                 return new String(bytes, StandardCharsets.UTF_8);
@@ -128,7 +128,7 @@ public class AllMusicClient implements IPayloadHandler<MusicCodec>, AllMusicBrid
     @Override
     public InputStream readFile(String file) {
         try {
-            Resource resource = Minecraft.getInstance().getResourceManager().getResource(ResourceLocation.fromNamespaceAndPath(AllMusicInit.MODID, file)).orElseThrow();
+            Resource resource = Minecraft.getInstance().getResourceManager().getResource(ResourceLocation.fromNamespaceAndPath(MODID, file)).orElseThrow();
             return resource.open();
         } catch (Exception e) {
             e.printStackTrace();
@@ -136,7 +136,7 @@ public class AllMusicClient implements IPayloadHandler<MusicCodec>, AllMusicBrid
         }
     }
 
-    @EventBusSubscriber(modid = AllMusicInit.MODID, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
     public static class MusicEvent {
         @SubscribeEvent
         public static void onTick(ClientTickEvent.Post event) {
