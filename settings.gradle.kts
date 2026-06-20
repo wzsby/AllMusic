@@ -30,8 +30,8 @@ include(":server:fabric_1_21_11")
 include(":server:fabric_26_1")
 include(":server:fabric_26_2")
 
-//include(":server:forge_1_7_10")
-//include(":server:forge_1_12_2")
+include(":server:forge_1_7_10")
+include(":server:forge_1_12_2")
 include(":server:forge_1_16_5")
 include(":server:forge_1_20_1")
 
