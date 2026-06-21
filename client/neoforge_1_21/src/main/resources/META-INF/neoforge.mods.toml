@@ -31,6 +31,6 @@ side = "CLIENT"
 [[dependencies.allmusic_client]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21,1.21.1)"
+versionRange = "[1.21,)"
 ordering = "NONE"
 side = "CLIENT"
