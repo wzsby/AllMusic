@@ -9,6 +9,9 @@ import com.coloryr.allmusic.server.core.side.BaseSide;
 import com.coloryr.allmusic.server.event.MusicAddEvent;
 import com.coloryr.allmusic.server.event.MusicPlayEvent;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.permissions.PermissionSet;
@@ -126,6 +129,24 @@ public class SideFabric extends BaseSide {
     public boolean onMusicAdd(Object obj, PlayerAddMusicObj music) {
         CommandSourceStack source = (CommandSourceStack) obj;
         return MusicAddEvent.EVENT.invoker().interact(source.getPlayer(), music) != InteractionResult.PASS;
+    }
+
+    @Override
+    public Component miniMessage(String input) {
+        MiniMessage mm = MiniMessage.miniMessage();
+        return mm.deserialize(input);
+    }
+
+    @Override
+    public Component miniMessageRun(String input, String command) {
+        Component component = miniMessage(input);
+        return component.clickEvent(ClickEvent.runCommand(command));
+    }
+
+    @Override
+    public Component miniMessageSuggest(String input, String command) {
+        Component component = miniMessage(input);
+        return component.clickEvent(ClickEvent.suggestCommand(command));
     }
 
     private void send(ServerPlayer players, MusicPack data) {

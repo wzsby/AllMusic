@@ -10,6 +10,8 @@ import com.coloryr.allmusic.server.event.MusicAddEvent;
 import com.coloryr.allmusic.server.event.MusicPlayEvent;
 import io.netty.buffer.ByteBuf;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundCustomPayloadPacket;
@@ -143,6 +145,24 @@ public class SideForge extends BaseSide {
     public boolean onMusicAdd(Object obj, PlayerAddMusicObj music) {
         MusicAddEvent event = new MusicAddEvent(music, (CommandSourceStack) obj);
         return MinecraftForge.EVENT_BUS.post(event);
+    }
+
+    @Override
+    public Component miniMessage(String input) {
+        MiniMessage mm = MiniMessage.miniMessage();
+        return mm.deserialize(input);
+    }
+
+    @Override
+    public Component miniMessageRun(String input, String command) {
+        Component component = miniMessage(input);
+        return component.clickEvent(ClickEvent.runCommand(command));
+    }
+
+    @Override
+    public Component miniMessageSuggest(String input, String command) {
+        Component component = miniMessage(input);
+        return component.clickEvent(ClickEvent.suggestCommand(command));
     }
 
     private void send(ServerPlayer players, ByteBuf data) {

@@ -23,13 +23,11 @@ public class CommandSearchApi extends ACommand {
             return;
         }
 
-        // args 应该是：["searchapi", "api名", "歌曲名"]
         if (args.length < 3) {
             AllMusic.side.sendMessage(sender, AllMusic.getMessage().musicPlay.error2);
             return;
         }
 
-        // 去掉 args[0] 的子命令名 searchapi，保留 ["api名", "歌曲名"]
         String[] newArgs = new String[args.length - 1];
         System.arraycopy(args, 1, newArgs, 0, newArgs.length);
 

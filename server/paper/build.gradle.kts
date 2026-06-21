@@ -11,6 +11,8 @@ dependencies {
 
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
     compileOnly("me.clip:placeholderapi:2.11.6")
+
+    compileOnly("net.kyori:adventure-text-minimessage:${Versions.minimessage}")
 }
 
 tasks {

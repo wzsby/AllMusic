@@ -10,6 +10,8 @@ import com.coloryr.allmusic.server.event.MusicAddEvent;
 import com.coloryr.allmusic.server.event.MusicPlayEvent;
 import com.coloryr.allmusic.server.hooks.CitizensNPC;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -153,5 +155,23 @@ public class SideFolia extends BaseSide {
     @Override
     public Object getPlayer(String player) {
         return Bukkit.getPlayer(player);
+    }
+
+    @Override
+    public Component miniMessage(String input) {
+        MiniMessage mm = MiniMessage.miniMessage();
+        return mm.deserialize(input);
+    }
+
+    @Override
+    public Component miniMessageRun(String input, String command) {
+        Component component = miniMessage(input);
+        return component.clickEvent(ClickEvent.runCommand(command));
+    }
+
+    @Override
+    public Component miniMessageSuggest(String input, String command) {
+        Component component = miniMessage(input);
+        return component.clickEvent(ClickEvent.suggestCommand(command));
     }
 }

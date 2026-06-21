@@ -11,6 +11,8 @@ import com.coloryr.allmusic.server.event.MusicPlayEvent;
 import io.netty.buffer.ByteBuf;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -127,6 +129,24 @@ public class SideFabric extends BaseSide {
     public boolean onMusicAdd(Object obj, PlayerAddMusicObj music) {
         CommandSourceStack source = (CommandSourceStack) obj;
         return MusicAddEvent.EVENT.invoker().interact(source.getPlayer(), music) != InteractionResult.PASS;
+    }
+
+    @Override
+    public Component miniMessage(String input) {
+        MiniMessage mm = MiniMessage.miniMessage();
+        return mm.deserialize(input);
+    }
+
+    @Override
+    public Component miniMessageRun(String input, String command) {
+        Component component = miniMessage(input);
+        return component.clickEvent(ClickEvent.clickEvent(ClickEvent.Action.RUN_COMMAND, command));
+    }
+
+    @Override
+    public Component miniMessageSuggest(String input, String command) {
+        Component component = miniMessage(input);
+        return component.clickEvent(ClickEvent.clickEvent(ClickEvent.Action.SUGGEST_COMMAND, command));
     }
 
     private void send(ServerPlayer players, ByteBuf data) {

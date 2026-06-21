@@ -6,6 +6,8 @@ repositories {
 dependencies {
     compileOnly("com.velocitypowered:velocity-api:3.0.0")
     annotationProcessor("com.velocitypowered:velocity-api:3.0.0")
+
+    compileOnly("net.kyori:adventure-text-minimessage:${Versions.minimessage}")
 }
 
 tasks {

@@ -9,6 +9,8 @@ import com.coloryr.allmusic.server.core.objs.music.PlayerAddMusicObj;
 import com.coloryr.allmusic.server.core.objs.music.SongInfoObj;
 import com.coloryr.allmusic.server.core.saves.HudSave;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 
 import java.io.File;
 import java.util.Collection;
@@ -541,7 +543,7 @@ public abstract class BaseSide {
      * @param data 消息
      */
     public final void broadcastInTask(String data) {
-        broadcastInTask(AllMusic.miniMessage(data));
+        broadcastInTask(miniMessage(data));
     }
 
     /**
@@ -551,7 +553,7 @@ public abstract class BaseSide {
      * @param message 消息
      */
     public final void sendMessageTask(Object obj, String message) {
-        runTask(() -> sendMessage(obj, AllMusic.miniMessage(message)));
+        runTask(() -> sendMessage(obj, miniMessage(message)));
     }
 
     /**
@@ -560,7 +562,7 @@ public abstract class BaseSide {
      * @param data 消息
      */
     public final void broadcast(String data) {
-        broadcast(AllMusic.miniMessage(data));
+        broadcast(miniMessage(data));
     }
 
     /**
@@ -570,8 +572,14 @@ public abstract class BaseSide {
      * @param message 消息
      */
     public final void sendMessage(Object obj, String message) {
-        sendMessage(obj, AllMusic.miniMessage(message));
+        sendMessage(obj, miniMessage(message));
     }
+
+    public abstract Component miniMessage(String input);
+
+    public abstract Component miniMessageRun(String input, String command);
+
+    public abstract Component miniMessageSuggest(String input, String command);
 
     /**
      * 更新信息
@@ -607,6 +615,6 @@ public abstract class BaseSide {
      * @param data 数据
      */
     public void sendBarInTask(String data) {
-        sendBarInTask(AllMusic.miniMessage(data));
+        sendBarInTask(miniMessage(data));
     }
 }
