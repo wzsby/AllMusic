@@ -45,8 +45,8 @@ public class CommandVote extends ACommand {
                     .replace(ARG.time, String.valueOf(AllMusic.getConfig().voteTime))
                     .replace(ARG.countAll, String.valueOf(PlayRuntime.getMiniVote()));
             AllMusic.side.broadcast(data);
-            AllMusic.side.broadcast(AllMusic.miniMessage(AllMusic.getMessage().vote.bq1)
-                    .append(AllMusic.miniMessageRun(AllMusic.getMessage().vote.bq2, "/music vote")));
+            AllMusic.side.broadcast(AllMusic.side.miniMessage(AllMusic.getMessage().vote.bq1)
+                    .append(AllMusic.side.miniMessageRun(AllMusic.getMessage().vote.bq2, "/music vote")));
         } else {
             if (!PlayMusic.containVote(name)) {
                 PlayMusic.addVote(name);

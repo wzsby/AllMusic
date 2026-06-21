@@ -5,7 +5,7 @@ import net.kyori.adventure.text.Component;
 
 public interface IAllMusicLogger {
     default void data(String data) {
-        data(AllMusic.miniMessage(data));
+        data(AllMusic.side.miniMessage(data));
     }
 
     void data(Component data);

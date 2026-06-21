@@ -74,8 +74,8 @@ public class MusicSearch {
         String info;
         AllMusic.side.sendMessage(sender, "");
         if (search.haveLastPage()) {
-            AllMusic.side.sendMessage(sender, AllMusic.miniMessage(AllMusic.getMessage().search.lastPage)
-                    .append(AllMusic.miniMessageRun(AllMusic.getMessage().page.last, "/music lastpage")));
+            AllMusic.side.sendMessage(sender, AllMusic.side.miniMessage(AllMusic.getMessage().search.lastPage)
+                    .append(AllMusic.side.miniMessageRun(AllMusic.getMessage().page.last, "/music lastpage")));
         }
         for (int a = 0; a < index; a++) {
             item = search.getRes(a + search.getPage() * 10);
@@ -84,12 +84,12 @@ public class MusicSearch {
                     .replace(ARG.musicName, item.name)
                     .replace(ARG.musicAuthor, item.author)
                     .replace(ARG.musicAl, item.al);
-            AllMusic.side.sendMessage(sender, AllMusic.miniMessage(info)
-                    .append(AllMusic.miniMessageRun(AllMusic.getMessage().click.clickRun, "/music select " + (a + 1))));
+            AllMusic.side.sendMessage(sender, AllMusic.side.miniMessage(info)
+                    .append(AllMusic.side.miniMessageRun(AllMusic.getMessage().click.clickRun, "/music select " + (a + 1))));
         }
         if (search.haveNextPage()) {
-            AllMusic.side.sendMessage(sender, AllMusic.miniMessage(AllMusic.getMessage().search.nextPage)
-                    .append(AllMusic.miniMessageRun(AllMusic.getMessage().page.next, "/music nextpage")));
+            AllMusic.side.sendMessage(sender, AllMusic.side.miniMessage(AllMusic.getMessage().search.nextPage)
+                    .append(AllMusic.side.miniMessageRun(AllMusic.getMessage().page.next, "/music nextpage")));
         }
         AllMusic.side.sendMessage(sender, "");
     }
