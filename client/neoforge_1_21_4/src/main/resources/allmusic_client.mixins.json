@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.coloryr.allmusic.client.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+  ],
+  "client": [
+    "GuiRender"
+  ],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

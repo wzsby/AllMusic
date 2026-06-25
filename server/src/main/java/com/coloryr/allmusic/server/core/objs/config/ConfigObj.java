@@ -123,6 +123,10 @@ public class ConfigObj {
      * 歌词正则替换
      */
     public Map<String, String> lyricReplace;
+    /**
+     * 歌曲时间修正
+     */
+    public int fixSongTime;
 
     public static ConfigObj make() {
         ConfigObj config = new ConfigObj();
@@ -163,6 +167,7 @@ public class ConfigObj {
 
     public void init() {
         maxPlayerList = 0;
+        fixSongTime = 0;
         maxPlayList = 10;
         minVote = 3;
         voteTime = 30;

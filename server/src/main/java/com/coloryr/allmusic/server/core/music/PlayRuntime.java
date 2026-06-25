@@ -16,7 +16,6 @@ public class PlayRuntime {
     /**
      * 倒数计数器
      */
-    private static int count = 0;
     private static int ping = 0;
     /**
      * 歌曲定时器
@@ -230,7 +229,7 @@ public class PlayRuntime {
                         PlayMusic.lyric = new LyricSave();
 
                     if (PlayMusic.nowPlayMusic.getLength() != 0) {
-                        PlayMusic.musicAllTime = PlayMusic.musicLessTime = PlayMusic.nowPlayMusic.getLength();
+                        PlayMusic.musicAllTime = PlayMusic.musicLessTime = PlayMusic.nowPlayMusic.getLength() + AllMusic.getConfig().fixSongTime;
                         isPlay = true;
                         AllMusic.side.sendMusic(PlayMusic.url);
                         if (!AllMusic.getConfig().mutePlayMessage) {

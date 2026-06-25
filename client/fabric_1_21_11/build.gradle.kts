@@ -8,9 +8,9 @@ java.targetCompatibility = JavaVersion.VERSION_21
 dependencies {
     minecraft("com.mojang:minecraft:1.21.11")
     mappings(loom.officialMojangMappings())
-    modImplementation("net.fabricmc:fabric-loader:0.18.6")
+    modImplementation("net.fabricmc:fabric-loader:0.19.3")
 
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.141.3+1.21.11")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.141.4+1.21.11")
 
     compileOnly("icyllis.modernui:ModernUI-Fabric:26.1.2-3.13.0.4")
 }

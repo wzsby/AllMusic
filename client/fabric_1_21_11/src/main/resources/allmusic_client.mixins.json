@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.coloryr.allmusic.client.mixin",
+  "package": "com.coloryr.allmusic.client.mixins",
   "compatibilityLevel": "JAVA_21",
   "client": [
     "GuiShow",

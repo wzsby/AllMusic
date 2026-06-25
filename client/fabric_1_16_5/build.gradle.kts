@@ -5,7 +5,7 @@ plugins {
 dependencies {
     minecraft("com.mojang:minecraft:1.16.5")
     mappings(loom.officialMojangMappings())
-    modCompileOnly("net.fabricmc:fabric-loader:0.18.5")
+    modCompileOnly("net.fabricmc:fabric-loader:0.19.3")
 
     modCompileOnly("net.fabricmc.fabric-api:fabric-api:0.42.0+1.16")
 }

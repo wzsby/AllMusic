@@ -7,7 +7,7 @@ java.targetCompatibility = JavaVersion.VERSION_25
 
 dependencies {
     minecraft("com.mojang:minecraft:26.1")
-    implementation("net.fabricmc:fabric-loader:0.18.6")
+    implementation("net.fabricmc:fabric-loader:0.19.3")
 
     implementation("net.fabricmc.fabric-api:fabric-api:0.145.1+26.1")
 

@@ -8,9 +8,9 @@ java.targetCompatibility = JavaVersion.VERSION_17
 dependencies {
     minecraft("com.mojang:minecraft:1.20.1")
     mappings(loom.officialMojangMappings())
-    modCompileOnly("net.fabricmc:fabric-loader:0.16.10")
+    modCompileOnly("net.fabricmc:fabric-loader:0.19.3")
 
-    modCompileOnly("net.fabricmc.fabric-api:fabric-api:0.92.3+1.20.1")
+    modCompileOnly("net.fabricmc.fabric-api:fabric-api:0.92.9+1.20.1")
 }
 
 tasks {

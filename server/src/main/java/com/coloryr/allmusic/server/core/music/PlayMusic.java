@@ -443,8 +443,8 @@ public class PlayMusic {
             return false;
         }
         int count = 0;
-        for (PlayerAddMusicObj obj : tasks) {
-            if (obj.name.equalsIgnoreCase(name)) {
+        for (SongInfoObj obj : playList) {
+            if (obj.getCall().equalsIgnoreCase(name)) {
                 count++;
             }
         }
