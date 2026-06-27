@@ -96,6 +96,10 @@ public class CoreRenderTarget extends TextFrameBuffer {
         Component component = MiniMessage.parse(text);
         int width = font.width(component.getVisualOrderText());
 
+        if (width == 0) {
+            return;
+        }
+
         int i = (int) minecraft.mouseHandler.getScaledXPos(window);
         int j = (int) minecraft.mouseHandler.getScaledYPos(window);
 

@@ -63,6 +63,11 @@ public class CoreRenderTarget extends TextFrameBuffer {
         Component component = MiniMessage.parse(text);
         Font font = Minecraft.getInstance().font;
         int width = font.width(component);
+
+        if (width == 0) {
+            return;
+        }
+
         int height = font.lineHeight + (shadow ? 1 : 0);
         if (isState) {
             y = 0;

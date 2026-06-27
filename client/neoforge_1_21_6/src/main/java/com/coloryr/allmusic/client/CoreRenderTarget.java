@@ -92,6 +92,10 @@ public class CoreRenderTarget extends TextFrameBuffer {
         Component component = MiniMessage.parse(text);
         int width = font.width(component.getVisualOrderText());
 
+        if (width == 0) {
+            return;
+        }
+
         GuiGraphics graphics = new GuiGraphics(Minecraft.getInstance(), renderState);
         color = color | 0xFF000000;
         graphics.drawString(font, component, 0, y, color, shadow);
